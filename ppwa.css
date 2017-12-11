@@ -1,0 +1,523 @@
+/* Base Theme Variables */
+:root {
+  --color-main: #1a3a88;
+	--color-accent: #d2232a;
+	--color-light-1: #eeeeff;
+	--color-light-2: #eeeeee;
+	--color-medium: #6688bb;
+	--color-text: #222222;
+	--display-font:	'Liberation Sans Narrow',
+					'Gill Sans MT Condensed',
+					sans-serif;
+	--body-font:	Georgia, 
+					serif;
+	--font-scale: 1.2;
+	--text-size-0: 18px;
+	--text-size-1: calc( var(--text-size-0) * var(--font-scale) );
+	--text-size-2: calc( var(--text-size-1) * var(--font-scale) );
+	--text-size-3: calc( var(--text-size-2) * var(--font-scale) );
+	--text-size-4: calc( var(--text-size-3) * var(--font-scale) );
+	--text-size-5: calc( var(--text-size-4) * var(--font-scale) );
+	--text-size-6: calc( var(--text-size-5) * var(--font-scale) );
+	--text-size-sm: calc( var(--text-size-0) / var(--font-scale) );
+	--underline-shadow: 1px 1px 1px white, -1px 1px 1px white, 2px 1px 1px white, -2px 1px 1px white, 1px -1px 1px white, -1px -1px 1px white, 2px -1px 1px white, -2px -1px 1px white;
+}
+body {
+	font-size: 21.6px;
+	font-size: var(--text-size-1);
+	color: var(--color-text);
+	margin:0;
+	padding:0;
+}
+
+p {
+	margin: 1em 0 1em 0;
+	padding: 0;
+}
+
+/* Top Header: Menus, etc. */
+body>header {
+	display:block;
+	width: 100%;
+	height:90px;
+	position:fixed;
+	z-index:2;
+	left:0;
+	top:0;
+	margin:0 0 1em 0;
+ /* background: -webkit-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Safari 5.1-6*/
+  /* background: -o-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Opera 11.1-12*/
+  /* background: -moz-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Fx 3.6-15*/
+  /* background: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1), rgba(255,255,255,1)); /*Standard*/
+	}
+header nav {
+	display:block;
+	width: 100vw;
+	max-width: 600px;
+	margin: 0 auto;
+	
+}
+header nav ul {
+	display:flex;
+	flex-direction: row;
+	width:100%;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+header nav ul li {
+	display:flex-item;
+	flex-grow:1;
+	margin:0;
+	padding:0;
+	width:50%;
+}
+header nav ul li a {
+	display:inline-block;
+	box-sizing:border-box;
+	width:100%;
+	padding:5px 10px;
+	vertical-align:middle;
+	text-decoration:none;
+	border: 1px solid var(--color-light-2);
+	border-top:  1px solid var(--color-main);
+	font-family: var(--display-font);
+	font-weight:bold;
+	line-height: var(--text-size-5);
+	background: var(--color-main);
+	color: var(--color-light-1);
+	font-size: var(--text-size-3);
+	min-height:60px;
+}
+
+
+/* Overall Main and Articles */
+main {
+	width: calc(100vw - 20px);
+	max-width:580px;
+	margin: 1.5em auto;
+	padding:5px;
+	box-sizing:border-box;
+	font-size: var(--text-size-1);
+	position:relative;
+	z-index:1;
+	overflow-y: auto;
+
+	background:
+		/* Shadow covers */
+		linear-gradient(white 30%, rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+		
+		/* Shadows */
+		radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+		radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+	background:
+		/* Shadow covers */
+		linear-gradient(white 30%, rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+		
+		/* Shadows */
+		radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+		radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+	background-repeat: no-repeat;
+	background-color: white;
+	background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+	
+	/* Opera doesn't support this in the shorthand */
+	background-attachment: local, local, scroll, scroll;
+}
+
+/* Article block styles */
+article {
+	padding: calc(30px + 1em) 0 1em 0;
+	border-top:1px solid var(--color-light-2);
+	width: calc(100vw - 30px);
+	max-width: 570px;
+}
+/* article::after {
+	content: ' ';
+	display:block;
+	clear:both;
+}
+
+/* Article content standards */
+section, p {
+	font-family: var(--body-font);
+	font-size: var(--text-size-1);
+	line-height: var(--text-size-3);
+}
+section::after {
+	content: ' ';
+	display:block;
+	margin:1.4em;
+}
+h1 {
+	font-family: var(--body-font);
+	font-weight: normal;
+	font-size: var(--text-size-4);
+	text-align:center;
+}
+h2, h3, h4, 
+h5 .artNum, 
+h6 .artNum  {
+	font-family: var(--display-font);
+	font-weight:bold;
+}
+h2, h3 {
+	margin-top:1em;
+	font-size: var(--text-size-3);
+	text-transform: uppercase;
+}
+h2 span, h3 span {
+	display:block;
+	width: calc(100vw - 20px);
+	max-width:600px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+h2 .artNum, 
+h3 .artNum {
+	font-size: var(--text-size-1);
+}
+h4 {
+	font-size: var(--text-size-2);
+	display:table;
+	margin: 1em 0;
+	color: var(--color-text);
+}
+h4 .artNum {
+	display:table-cell;
+	white-space:nowrap;
+	padding-right:0.5em;
+	text-align:left;
+}
+h4 .artTitle {
+	display: table-cell;
+	margin:0;
+	text-indent:0;
+	text-shadow: var(--underline-shadow);
+}
+h5, h6 {
+	font-family:var(--body-font);
+	font-size: var(--text-size-1);
+	font-weight:normal;
+	display:inline;
+	margin:0 0 -0.4em 0;
+}
+h5 .artTitle {
+	display:inline;
+	text-shadow: 2px 2px white, -2px 2px white, 2px -2px white, -1px -1px white, 1px 1px white, -1px 1px white, 1px -1px white, -1px -1px white;
+    box-shadow: inset 0 -0.05em 0 0 #fff, inset 0 -0.1em 0 0 #333333;
+}
+h6 .artTitle {
+	font-weight:normal;
+	font-style:italic;
+	text-decoration:none;
+}
+.level6 {
+	padding-left: 1.5em;
+	box-sizing:border-box;
+}
+section .content,
+section .content p:first-child {
+	display:inline;
+}
+ol.upper-alpha-list {
+	list-style-type: upper-alpha;
+	font-weight:bold;
+	font-family: var(--display-font);
+}
+ol.upper-alpha-list li {
+	font-weight:normal;
+	font-family: var(--body-font)
+}
+
+
+/* Blockquote Special Case */
+blockquote {
+	display:block;
+	margin:1em;
+	clear:both;
+}
+blockquote>ol>li,
+blockquote>ol>li>ol>li>ol>li {
+	font-family: var(--display-font);
+}
+blockquote h2, 
+blockquote h3, 
+blockquote h4 {
+	font-size: 1em;
+}
+blockquote h3, 
+blockquote h4,
+blockquote>ol>li>ol>li,
+blockquote>ol>li>ol>li>ol>li p,
+blockquote>ol>li>ol>li>ol>li ul {
+	font-family: var(--body-font);
+	font-weight: normal;
+}
+
+/* Breadcrumbs */
+nav.breadcrumb {
+	margin-top:2em;
+}
+.breadcrumb ol {
+	list-style-type: none;
+	display:table;
+	padding:0;
+	font-family: var(--display-font);
+	margin:0;
+}
+.breadcrumb ol li {
+	display:table-cell;
+}
+.breadcrumb ol li:first-child {
+	white-space:nowrap;
+}
+.breadcrumb ol a {
+	font-size: var(--text-size-0);
+	
+}
+.breadcrumb ol+ol {
+	margin: 0 0 1em 0;
+	float:right;
+	text-align:right;
+}
+.breadcrumb ol:nth-child(2) + h4 {
+	clear:both;
+}
+
+/* TOC of child articles in three tophs */
+.childLinks {
+	margin: 0 10px 0 0;
+	padding:0;
+	border-collapse: collapse;
+	width:100%;
+	max-width: 580px;
+}
+.childLinks td {
+	margin:0;
+	padding:0;
+	background: var(--color-light-1);
+	border:none;
+	border-bottom: 1px solid var(--color-light-2);
+}
+.childLinks tr:last-child td {
+	border-bottom:none
+}
+.childLinks td:last-child {
+	text-align:left;
+	vertical-align:middle;
+}
+.childLinks td:last-child a {
+	padding:0.4em 0.4em 0.4em 0;
+}
+.childLinks td:first-child {
+	text-align: left;
+	vertical-align:top;
+	width:10px;
+}
+.childLinks td:first-child a {
+	padding: 0.4em 0.4em 0.4em 0.8em;
+}
+.childLinks a {
+	display:inline-block;
+	box-sizing: border-box;
+	width: 100%;
+	vertical-align: middle;
+	text-decoration: none;
+	border: none;
+	font-size: var(--text-size-1);
+	font-weight: normal;
+	line-height: var(--text-size-3);
+	margin: 0;
+	background: transparent;
+	color: var(--color-accent);
+}
+.childLinks .linkNum {
+	white-space:nowrap;
+}
+
+/* tables in .content */
+.content > table {
+	font-family: var(--body-font);
+	font-size: var(--text-size-0);
+	border-collapse: collapse;
+	border: 1px solid var(--color-text);
+	font-weight:normal;
+}
+.content > table td {
+	border: 1px solid var(--color-text);
+}
+.content > table th:not(:last-child) {
+	border: 1px solid var(--color-text);
+
+}
+.content > table thead th {
+	background: var(--color-text);
+	color: var(--color-light-2);
+	margin:0;
+	border: 1px solid var(--color-text);
+}
+.content > table thead th:not(:last-child) {
+	border-right: 1px solid var(--color-light-2);
+}
+.content > table thead tr:not(:last-child) th {
+	border-bottom: 1px solid var(--color-light-2);
+}
+.content > table p {
+	font-family:var(--display-text); 
+	font-size:var(--text-size-0); 
+	line-height: 1.3em
+}
+/* Leader lists */
+ul.leaders {
+    max-width: 40em;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none}
+ul.leaders li:before {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    content:
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "}
+ul.leaders span:first-child {
+    padding-right: 0.33em;
+    background: white}
+ul.leaders span + span {
+    float: right;
+    padding-left: 0.33em;
+    background: white}
+
+/* Prev and Next Navigation (per-article) */
+article footer nav {
+	width: 100%;
+	max-width:600px;
+	margin:0 auto;
+	overflow-y:hidden;
+	overflow-x:visible;
+	padding: 30px 0 0 0;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+}
+article footer nav ol{
+	display:flex;
+	flex-direction: row;
+	width:100%;
+	max-width:600px;
+	margin:0 auto;
+	padding:0;
+	list-style-type:none;
+	box-shadow: 0 0 30px var(--color-medium);
+}
+article footer nav li{
+	display:flex-item;
+	flex-grow:1;
+	margin:0;
+	padding:0;
+	width:50%;
+	vertical-align:middle;
+}
+article footer nav a {
+	display:inline-block;
+	box-sizing:border-box;
+	width:100%;
+	padding:5px 10px;
+	vertical-align:middle;
+	text-decoration:none;
+	border: 1px solid #dddddd;
+	font-family: var(--display-font);
+	font-size: 30px;
+	font-weight:bold;
+	line-height: 60px;
+	background: var(--color-light-2);
+	color: var(--color-main);
+    min-height: 60px;
+}
+article footer nav li:last-child {
+	text-align:right;
+}
+
+/* Site footer */
+body > footer {
+	background: var(--color-medium);
+	color: var(--color-light-2);
+	box-sizing: border-box;
+	vertical-align:top;
+	width: 100vw;
+	max-width:600px;
+	padding: 1em 1em 3em 1em;
+	margin: 3em auto 0 auto;
+	margin-top: calc( 3 * var(--text-size-6) ) 
+	}
+body > footer p {
+	font-family: var(--display-font);
+	font-size: var(--text-size-sm);
+	line-height: var(--text-size-0);
+	font-style: italic;
+	font-weight:normal;
+	text-align:center;
+}
+
+/* App-like hiding of non-target articles. To test visibility in case :target isn't supported erase this close-comment and the one above navs */
+@keyframes pulse {
+	0% { transform: scale(1) }
+    50% { transform: scale(1.05) }
+    100% { transform: scale(1) }
+}
+@keyframes fade-in {
+	0% { opacity: 0}
+	100% {opacity: 1}
+}
+article {
+	display:none;
+	}
+article:last-of-type,
+article:last-of-type footer nav {
+	display:block;
+}
+article:last-of-type footer {
+	animation:none;
+	display:block;
+	width: 100%;
+	bottom:0;
+	min-height:60px;
+	position:fixed;
+	left:0;
+	bottom:0;
+	margin: 1em 0 0 0;
+}
+
+article:target{
+	display:block;
+	min-height:calc(  (100vw + 90px) + ( 2 * var(--text-size-3) )  );
+}
+article:target * {
+	animation: fade-in 0.25s linear 1;
+}
+article:target ~ article {
+    display: none;
+}
+/* Prev-Next Navs revealed on targeting for app behavior. To test visibility in case :target isn't supported erase this close-comment and the one above navs */
+article:target footer * {
+	animation:none;
+}
+article:target footer nav {
+	display:block;
+}
+article:target footer {
+	animation:none;
+	display:block;
+	width: 100%;
+	bottom:0;
+	min-height:60px;
+	position:fixed;
+	left:0;
+	bottom:0;
+	margin: 1em 0 0 0;
+}
