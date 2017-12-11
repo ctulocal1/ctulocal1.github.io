@@ -1,0 +1,25 @@
+{
+  "short_name": "CTU Contract",
+  "name": "CTU-CPS Contract 2015-19",
+  "icons": [
+    {
+      "src": "apple-touch-icon-57x57.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "favicon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "favicon-196x196.png.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    }
+  ],
+  "start_url": "index.html#home",
+  "display": "browser",
+  "background_color": "#1a3a88",
+  "theme_color": "#d2232a"
+}
