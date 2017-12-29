@@ -136,8 +136,12 @@ article, article.ui-page {
 	border-top:1px solid var(--color-light-2);
 	width: calc(100vw - 30px);
 	max-width: 570px;
-	margin: 0 calc(50vw - 285px); 
-position:static;
+	margin: 0 auto; 
+	position:static;
+}
+
+@media screen and (min-width:570px) {
+	article, article.ui-page { margin: 0 calc(50vw - 285px);} 
 }
 /*
  article::after {
