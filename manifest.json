@@ -8,12 +8,11 @@
       "sizes": "48x48"
     },
     {
-      "src": "favicon-96x96.png",
-      "type": "image/png",
+      "src": "icons/favicon-96x96.png",
       "sizes": "96x96"
     },
     {
-      "src": "favicon-196x196.png.png",
+      "src": "icons/favicon-196x196.png",
       "type": "image/png",
       "sizes": "196x196"
     }
