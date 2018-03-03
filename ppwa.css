@@ -22,7 +22,6 @@
 	--text-size-sm: calc( var(--text-size-0) / var(--font-scale) );
 	--underline-shadow: 1px 1px 1px white, -1px 1px 1px white, 2px 1px 1px white, -2px 1px 1px white, 1px -1px 1px white, -1px -1px 1px white, 2px -1px 1px white, -2px -1px 1px white;
 }
-
 body {
 	font-size: 21.6px;
 	font-size: var(--text-size-1);
@@ -36,7 +35,7 @@ p {
 	padding: 0;
 }
 
-/* Top Header: Menus, etc. 
+/* Top Header: Menus, etc. */
 body>header {
 	display:block;
 	width: 100%;
@@ -46,10 +45,10 @@ body>header {
 	left:0;
 	top:0;
 	margin:0 0 1em 0;
- /* background: -webkit-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Safari 5.1-6
-  /* background: -o-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Opera 11.1-12
-  /* background: -moz-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Fx 3.6-15
-  /* background: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1), rgba(255,255,255,1)); /*Standard
+ background: -webkit-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1),rgba(255,255,255,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,1),rgba(255,255,255,1), rgba(255,255,255,1)); /*Standard*/
 	}
 header nav {
 	display:block;
@@ -93,58 +92,27 @@ header nav ul li a {
 
 
 /* Overall Main and Articles */
-main, .ui-mobile-viewport {
+main {
 	width: calc(100vw - 20px);
 	max-width:580px;
-	margin: calc(30px + 1.5em) auto;
+	margin: 1.5em auto;
 	padding:5px;
 	box-sizing:border-box;
 	font-size: var(--text-size-1);
-	z-index:1;
-	overflow-y: visible;
-display:block;
-position: static; 
-height:auto;
-}
-/*	background:
-		/* Shadow covers 
-		linear-gradient(white 30%, rgba(255,255,255,0)),
-		linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
-		
-		/* Shadows 
-		radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
-		radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-	background:
-		/* Shadow covers 
-		linear-gradient(white 30%, rgba(255,255,255,0)),
-		linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
-		
-		/* Shadows 
-		radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
-		radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-	background-repeat: no-repeat;
-	background-color: white;
-	background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-	
-	/* Opera doesn't support this in the shorthand 
-	background-attachment: local, local, scroll, scroll;
 }
 
 /* Article block styles */
-article, article.ui-page {
-	padding: 1em 0;
+article {
+	padding: calc(30px + 1em) 0 1em 0;
 	border-top:1px solid var(--color-light-2);
 	width: calc(100vw - 30px);
 	max-width: 570px;
-	margin: 0 auto; 
-	position:static;
-}
+	position:relative;
+	z-index:1;
+	margin: 0 auto;
 
-@media screen and (min-width:570px) {
-	article, article.ui-page { margin: 0 calc(50vw - 285px);} 
 }
-/*
- article::after {
+article::after {
 	content: ' ';
 	display:block;
 	clear:both;
@@ -159,8 +127,8 @@ section, p {
 section::after {
 	content: ' ';
 	display:block;
-	margin:0.4em;
-line-height:1px; }
+	margin:1.4em;
+}
 h1 {
 	font-family: var(--body-font);
 	font-weight: normal;
@@ -404,15 +372,7 @@ ul.leaders span + span {
     padding-left: 0.33em;
     background: white}
 
-article > footer {
-	display:block;
-}
-
-.ui-page-theme-a {
-	background:white;
-}
-
-/* Prev and Next Navigation (per-article) 
+/* Prev and Next Navigation (per-article) */
 article footer nav {
 	width: 100%;
 	max-width:600px;
@@ -423,7 +383,6 @@ article footer nav {
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 }
-
 article footer nav ol{
 	display:flex;
 	flex-direction: row;
@@ -463,7 +422,8 @@ article footer nav li:last-child {
 }
 
 /* Site footer */
-main > footer {
+body > footer {
+	background: var(--color-medium);
 	color: var(--color-light-2);
 	box-sizing: border-box;
 	vertical-align:top;
@@ -471,10 +431,9 @@ main > footer {
 	max-width:600px;
 	padding: 1em 1em 3em 1em;
 	margin: 3em auto 0 auto;
-	margin-top: calc( 3 * var(--text-size-6) ) ;
-position: static;
+	margin-top: calc( 3 * var(--text-size-6) ) 
 	}
-main > footer p {
+body > footer p {
 	font-family: var(--display-font);
 	font-size: var(--text-size-sm);
 	line-height: var(--text-size-0);
@@ -483,7 +442,7 @@ main > footer p {
 	text-align:center;
 }
 
-/* App-like hiding of non-target articles. To test visibility in case :target isn't supported erase this close-comment and the one above navs 
+/* App-like hiding of non-target articles. To test visibility in case :target isn't supported erase this close-comment and the one above navs */
 @keyframes pulse {
 	0% { transform: scale(1) }
     50% { transform: scale(1.05) }
@@ -516,13 +475,13 @@ article:target{
 	display:block;
 	min-height:calc(  (100vw + 90px) + ( 2 * var(--text-size-3) )  );
 }
-/* article:target * {
+article:target * {
 	animation: fade-in 0.25s linear 1;
-} 
+}
 article:target ~ article {
     display: none;
 }
-/* Prev-Next Navs revealed on targeting for app behavior. To test visibility in case :target isn't supported erase this close-comment and the one above navs 
+/* Prev-Next Navs revealed on targeting for app behavior. To test visibility in case :target isn't supported erase this close-comment and the one above navs */
 article:target footer * {
 	animation:none;
 }
@@ -539,4 +498,4 @@ article:target footer {
 	left:0;
 	bottom:0;
 	margin: 1em 0 0 0;
-} */
+}
