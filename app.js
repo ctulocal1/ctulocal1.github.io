@@ -81,6 +81,7 @@ function searchKeys(e){
 	}
 	return false;
 }
+
 function clearPreviousResults () {
 	$("#searchResults").html('');
 }

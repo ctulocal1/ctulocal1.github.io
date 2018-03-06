@@ -1,0 +1,39 @@
+<html>
+<head>
+	<style>
+		form.searchform {
+			display:block;
+			position:relative;
+			}
+		.searchelements {
+			display:block;
+			width:300px;
+			height: 40px;
+			padding:10px;
+			position:absolute;
+			left:0;
+			top:0;
+			border-radius:4px;
+			background:white;
+			}
+		.searchlabels {
+			z-index: 0;
+			color:#bbb;
+			}
+		.searchinputs {
+			z-index: 1;
+			background-color:white;
+			}
+	</style>
+</head>
+<body>
+	<div class="searchcontainers">
+		<form class="searchform" name="searchform">
+			<label class="searchelements searchlabels" for="searchbox">Search Here</label>
+			<input class="searchelements searchinputs" type="search" name="query" value="" title="Enter search terms"  spellcheck="true"  placeholder="Search Here" />
+<!-- oninput="if(this.value!=''){this.style.background='white'}else{this.style.backgroundColor='transparent'}" onblur="this.value='';this.style.backgroundColor='transparent'" -->
+			<button type="submit"/>
+		</form>
+	</div>
+</body>
+</html>
