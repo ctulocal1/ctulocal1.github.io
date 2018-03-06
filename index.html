@@ -27,24 +27,22 @@
 		<meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
 		<meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
-	<!-- jQuery
-	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
 	<style>article footer {display:none} .breadcrumb>ol, .childLinks {list-style-type:none} .breadcrumb li {display:inline} .breadcrumb ol {padding:0;background:#eeeeee}</style><!-- -->
-	<link rel="stylesheet" type="text/css" href="./ppwa.css">
+	<link rel="stylesheet" type="text/css" href="./ppwa.css"/>
 </head>
 <body style="margin:0; padding:0;">  
 	<header>
-	<nav><ul><li><a href="#home">Home</a></li></ul></nav></header>
+            <nav><ul><li><a href="#home">Home</a></li><li><a href="#search">Search</a></li></ul></nav></header>
 <main>  
 <article id="search">
 	<h1 style="text-align:center; font-size:1em"><span class="artNum"></span> <span class="artTitle"><span style="font-family: var(--body-font); font-size:1.8em; font-weight:bold;  font-style:italic">Agreement</span> <br><span style="font-family: var(--body-font); font-size:0.5em; font-style:italic">between</span> <br>The Board of <br>Education of the City <br>of Chicago <span style="font-family: var(--body-font); font-size:0.5em; line-height:0.5em; font-style:italic"><br>and<br></span> Chicago Teachers <br>Union Local 1, <br>American Federation <br>of Teachers, <br>AFL-CIO</span></h1>
-			<form id='searchForm' method="get">
-				<div class="ui-textinput ui-corner-all ui-shadow-inset ui-textinput-text ui-body-inherit">
-					<input name="name" id="searchBox" value="" placehold='Enter Search Term' type="search" disabled>
+			<form id='searchForm' method="post">
+				<div>
+					<input name="name" id="searchBox" value="" placehold='Enter Search Term' type="search" >
 				</div>
 			<button type="submit" form='searchForm' id='searchButton'>SEARCH</button>
 			</form>
-			<section id='searchResults'>
+			<section id='searchResults' class="content">
 				<p></p>
 			</section>
 <footer>
@@ -5911,6 +5909,8 @@ No rights or privileges established in the parties’ successor  labor  agreemen
 </article>
 </main>
 <footer><p>Agreement ratified between:<br><span style="display: inline-block; white-space:nowrap; font-size:1.2em; color:#d2232a; text-shadow: 0 0 1px white; font-weight:bold; padding-top:0.4em;">Chicago Teachers Union:</span> <span style="white-space:nowrap; line-height:1em;">Karen GJ Lewis, NBCT, President</span><br><span style="display: inline-block; white-space:nowrap; font-size:1.2em; font-weight:bold; padding-top:0.4em;">Chicago Board of Education:</span> <span style="white-space:nowrap; line-height:1em;">Forrest Claypool, CEO</span></p><p>Chief App Developer: Nathan Goldbaum<br>Made with: <a style="color: var(--color-light-1)" href="https://github.com/krisk/Fuse">fuse.js</a>, <a href="https://hammerjs.github.io/" style="color: var(--color-light-1)">hammer.js</a></p><p>License CC-BY-SA</p></footer>
+<script src="./jquery/jquery-1.11.1.min.js"></script>
+<script src="./fuse.min.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>
