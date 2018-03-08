@@ -60,7 +60,7 @@ function display (searchResult) {
 		$('#searchResults').text('No result found.')
 	} else {
           console.log('display results');
-                  $('#searchResults').innerHTML='';
+                  $('#searchResults').empty();
 		searchResult.forEach ( function (itemObject) {
 			let resultLink = '<p><a href="#' + itemObject.item.id + '">' + itemObject.item.num + ' ' + itemObject.item.title + '</a></p>' + itemObject.item.content;
 			$('#searchResults').append(resultLink);
