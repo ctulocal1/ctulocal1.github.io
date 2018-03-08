@@ -59,14 +59,17 @@ function display (searchResult) {
 	if (searchResult.length == 0) {
 		$('#searchResults').text('No result found.')
 	} else {
+          console.log('display results');
+                  $('#searchResults').innerHTML='';
 		searchResult.forEach ( function (itemObject) {
-			let resultLink = '<p><a href="#' + itemObject.item.id + '">' + itemObject.item.num + ' ' + itemObject.item.title + '</a></p>'
+			let resultLink = '<p><a href="#' + itemObject.item.id + '">' + itemObject.item.num + ' ' + itemObject.item.title + '</a></p>' + itemObject.item.content;
 			$('#searchResults').append(resultLink);
 		} );
 	}
 }
 
 function searchKeys(e){
+  console.log('searchKeys');
 	let query=$('#searchBox').val();
 	if(e.keyCode === 13){
 		e.preventDefault(); // Ensure it is only this code that runs
@@ -75,7 +78,8 @@ function searchKeys(e){
 		display(result);
 	} else {
 		if (query.length > 1) {
-			let result=keywordSearch (query);
+                  console.log('key search');
+			let result=search (query);
 			display(result);
 		}
 	}
