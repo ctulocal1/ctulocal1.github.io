@@ -57,8 +57,8 @@ function articles () {
 function itemHTML (itemObject) {
 	let resultLink = `
 		<p><a href="#${itemObject.item.id}">${itemObject.item.num} ${itemObject.item.title}</a></p>
-		${itemObject.item.content};
-		`
+		${itemObject.item.content}
+		`;
 	return resultLink;
 }
 	
