@@ -34,7 +34,6 @@ function extract (section) {
 	article.num=$(section).find(".artNum").first().text().trim();
 	article.title=$(section).find(".artTitle").first().text().trim();
 	article.content=$(section).find(".content").first().text().trim();
-//	console.log('Article: '+JSON.stringify(article) );
 	return (article);
 }
 
@@ -55,21 +54,27 @@ function articles () {
 	return articles;
 }
 
+function itemHTML (item) {
+	let resultLink = `
+		<p><a href="#${itemObject.item.id}">${itemObject.item.num} ${itemObject.item.title}</a></p>
+		${itemObject.item.content};
+		`
+	return resultLink;
+}
+	
 function display (searchResult) {
 	if (searchResult.length == 0) {
 		$('#searchResults').text('No result found.')
 	} else {
-          console.log('display results');
                   $('#searchResults').empty();
-		searchResult.forEach ( function (itemObject) {
-			let resultLink = '<p><a href="#' + itemObject.item.id + '">' + itemObject.item.num + ' ' + itemObject.item.title + '</a></p>' + itemObject.item.content;
-			$('#searchResults').append(resultLink);
+		searchResult.forEach ( function (resultObject) {
+			let resultHTML=itemHTML(resultObject);
+			$('#searchResults').append(resultHTML);
 		} );
 	}
 }
 
 function searchKeys(e){
-  console.log('searchKeys');
 	let query=$('#searchBox').val();
 	if(e.keyCode === 13){
 		e.preventDefault(); // Ensure it is only this code that runs
@@ -78,7 +83,6 @@ function searchKeys(e){
 		display(result);
 	} else {
 		if (query.length > 1) {
-                  console.log('key search');
 			let result=search (query);
 			display(result);
 		}
