@@ -61,7 +61,7 @@ function display (searchResult) {
 	} else {
           console.log('display results');
                   $('#searchResults').empty();
-		$(searchResult).each ( function (itemObject) {
+		searchResult.forEach ( function (itemObject) {
 			let resultLink = '<p><a href="#' + itemObject.item.id + '">' + itemObject.item.num + ' ' + itemObject.item.title + '</a></p>' + itemObject.item.content;
 			$('#searchResults').append(resultLink);
 		} );
