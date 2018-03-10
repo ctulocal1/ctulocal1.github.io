@@ -54,7 +54,7 @@ function articles () {
 	return articles;
 }
 
-function itemHTML (item) {
+function itemHTML (itemObject) {
 	let resultLink = `
 		<p><a href="#${itemObject.item.id}">${itemObject.item.num} ${itemObject.item.title}</a></p>
 		${itemObject.item.content};
