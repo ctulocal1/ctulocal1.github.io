@@ -25,8 +25,46 @@ $('#searchBox').removeAttr( "disabled" );
 $('#searchBox').keyup(function(event) {
   searchKeys(event);
 });
-console.log('reading script');
 var articles=articles();
+window.addEventListener("hashchange", pageChange, false);
+window.onload=pageChange;
+
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+function pageChange () {
+  let pageHash='';
+  pageHash=window.location.hash;
+  let pageParams='';
+  pageParams=window.location.search;
+  console.log('pageChange: ' + pageHash + ' ' + pageParams);
+  // determine if hashtag is extra deep
+  // if so, change location.search to full article and hash to shorter
+  // if not and pageParams!='' then scroll to parameter target
+  if (pageParams!='') {
+    pageParams=pageParams.split('?')[1];
+    console.log(pageParams);
+    let targetID='#' + pageParams;
+    console.log(targetID);
+    let target=$(targetID);
+    console.log(target);
+    let pos = target.offset();
+      console.log (pos);
+    let top=pos.top;
+    $('body, html').animate({scrollTop: pos});
+  }
+  window.location.search='';
+}
 
 function extract (section) {
 	let article={};
