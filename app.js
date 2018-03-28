@@ -44,7 +44,7 @@ function pageChange () {
     let targetID='#' + pageParams;
     console.log(targetID);
     let target=$(targetID);
-    let targetClass=target.attr(class);
+    let targetClass=target.attr("class");
     console.log( targetClass );
     let pos = target.offset();
       console.log (pos);
