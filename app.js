@@ -29,19 +29,6 @@ var articles=articles();
 window.addEventListener("hashchange", pageChange, false);
 window.onload=pageChange;
 
-function findGetParameter(parameterName) {
-    var result = null,
-        tmp = [];
-    location.search
-        .substr(1)
-        .split("&")
-        .forEach(function (item) {
-          tmp = item.split("=");
-          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-        });
-    return result;
-}
-
 function pageChange () {
   let pageHash='';
   pageHash=window.location.hash;
@@ -63,7 +50,7 @@ function pageChange () {
     let top=pos.top;
     $('body, html').animate({scrollTop: pos});
   }
-  window.location.search='';
+  if (window.location.search!='') { window.location.search='' }
 }
 
 function extract (section) {
