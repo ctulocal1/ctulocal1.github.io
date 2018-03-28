@@ -1,160 +1,143 @@
-// Set up keywords search then init-keywd()
-// Create object for keywords
-// Keyword suggestions in search box
-// If keyword selected, return pre-set results
-
-// Display results
-
-// function init-keywd() sets searchbox for keywd only
-
-//   If there is no internal heading
-//     extract id, artNum, artTxt and content to object
-//     set scrollToID value to null(?)
-//     push object to array of articles
-//   Else (if there *are* sub-articles in body)
-//     extract parent article artNum, artTxt, content
-//     push parent to array of articles
-//     set current id as link
-//     select and loop through sections class=level5/6
-//       set scrollToID value to id of sub-section
-//       set artNum, artTxt and content as per normal
-//       push each child to array of articles
-
+//init sequence
+var articles=articles();
 $('#searchButton').click(function (event) {clickSearch(event)});
 $('#searchBox').removeAttr( "disabled" );
 $('#searchBox').keyup(function(event) {
   searchKeys(event);
 });
-var articles=articles();
 window.addEventListener("hashchange", pageChange, false);
 window.onload=pageChange;
 
-function pageChange () {
-  let pageHash='';
-  pageHash=window.location.hash;
-  let pageParams='';
-  pageParams=window.location.search;
-  console.log('pageChange: ' + pageHash + ' ' + pageParams);
-  // determine if hashtag is extra deep
-  // if so, change location.search to full article and hash to shorter
-  // if not and pageParams!='' then scroll to parameter target
-  if (pageParams!='') {
-    pageParams=pageParams.split('?')[1];
-    console.log(pageParams);
-    let targetID='#' + pageParams;
-    console.log(targetID);
-    let target=$(targetID);
-    let targetClass=target.attr("class");
-    console.log( targetClass );
-    let pos = target.offset();
-      console.log (pos);
-    let top=pos.top;
-    $('body, html').animate({scrollTop: pos});
-  }
-  if (window.location.search!='') { window.location.search='' }
+function articles () {
+  let articles=[];
+  $('article').each (function() {
+    let article=extract(this);
+    articles.push(article);
+    $(this).children('.level5').each (function() {
+      let subheading=extract(this);
+      articles.push(subheading);
+      $(this).children('.level6').each (function() {
+        let subparagraph=extract(this);
+        articles.push(subparagraph);
+      });
+    });
+  })
+  return articles;
 }
 
 function extract (section) {
-	let article={};
-	article.id=section.id;
-	article.num=$(section).find(".artNum").first().text().trim();
-	article.title=$(section).find(".artTitle").first().text().trim();
-	article.content=$(section).find(".content").first().text().trim();
-	return (article);
+  let article={};
+  article.id=section.id;
+  article.num=$(section).find(".artNum").first().text().trim();
+  article.title=$(section).find(".artTitle").first().text().trim();
+  article.content=$(section).find(".content").first().text().trim();
+  return (article);
 }
 
-function articles () {
-	let articles=[];
-	$('article').each (function() {
-		let article=extract(this);
-		articles.push(article);
-		$(this).children('.level5').each (function() {
-			let subheading=extract(this);
-			articles.push(subheading);
-			$(this).children('.level6').each (function() {
-				let subparagraph=extract(this);
-				articles.push(subparagraph);
-			});
-		});
-	})
-	return articles;
+function pageChange () {
+  let pageHash=window.location.hash;
+  let pageParams=window.location.search;
+  let url=new URL(window.location.href);
+  // determine if hashtag is extra deep 
+  // and, if so, reconstruct to make deep hash into query and shorten hash
+  if ( pageHash.indexOf('.') != -1 ) {
+    url=reHash(url);
+    window.location=url.href; // re-loads page with new query/hash
+    // on reload, this block will be skipped and go straight to next
+  }
+  // if there’s a query string then use it as a target to scroll down
+  if (pageParams!='') {
+    pageParams=pageParams.split('?')[1];
+    let targetID='#' + pageParams;
+    // use getElem because the . in the id attribute confuses jQuery
+    let target=document.getElementById( pageParams ); 
+    let pos = $(target).offset();
+    let top=pos.top - 130; // the -130 accounts for nav bar height
+    $('body, html').animate({scrollTop: top});
+    url.search='';
+    history.replaceState({ 'sec': pageParams }, '', url.href);
+  }
+}
+
+function reHash (url) {
+  let pageHash=url.hash;
+  pageHash=pageHash.split('#')[1];
+  url.search=pageHash;
+  let newHash=pageHash.split('.')[0];
+  url.hash=newHash;
+  return url;
 }
 
 function itemHTML (itemObject) {
-	let resultLink = `
-		<h3><a href="#${itemObject.item.id}">${itemObject.item.num} ${itemObject.item.title}</a></h3>
-		${itemObject.item.content}
-		`;
-	return resultLink;
+  let url=new URL(window.location.href);
+  url.hash=itemObject.item.id;
+  let linkHREF=reHash(url);
+  let resultLink = `
+    <blockquote style="font-size:var(--text-size-0); line-height:var(--text-size-1)">
+      <h3 style="font-size:var(--text-size-1)"><a href="${linkHREF}">${itemObject.item.num} ${itemObject.item.title}</a></h3>
+      ${itemObject.item.content}
+    </blockquote>
+  `;
+  return resultLink;
 }
-	
-function display (searchResult) {
-	if (searchResult.length == 0) {
-		$('#searchResults').text('No result found.')
-	} else {
-                  $('#searchResults').empty();
-		searchResult.forEach ( function (resultObject) {
-			let resultHTML=itemHTML(resultObject);
-			$('#searchResults').append(resultHTML);
-		} );
-	}
+
+function display (searchResults) {
+  if (searchResults.length == 0) {
+    $('#searchResults').text('No result found.')
+  } else {
+    $('#searchResults').empty();
+    searchResults.forEach ( function (resultObject) {
+      let resultHTML=itemHTML(resultObject);
+      $('#searchResults').append(resultHTML);
+    } );
+  }
 }
 
 function searchKeys(e){
-	let query=$('#searchBox').val();
-	if(e.keyCode === 13){
-		e.preventDefault(); // Ensure it is only this code that runs
-		console.log('Pressed enter');
-		let result=search(query);
-		display(result);
-	} else {
-		if (query.length > 1) {
-			let result=search (query);
-			display(result);
-		}
-	}
-	return false;
-}
-
-function clearPreviousResults () {
-	$("#searchResults").html('');
+  let query=$('#searchBox').val();
+  if(e.keyCode === 13){
+    e.preventDefault(); // Ensure it is only this code that runs
+    let result=search(query);
+    display(result);
+  } else {
+    if (query.length > 1) {
+      let result=search (query);
+      display(result);
+    }
+  }
+  return false;
 }
 
 function clickSearch (e){
-	e.preventDefault();
-	console.log('clicked');
-	clearPreviousResults();
-	let result=search( $('#searchBox').val() );
-	return result;
+  e.preventDefault();
+  let result=search( $('#searchBox').val() );
+  display(result);
 }
 
+/* keywordSearch is for later
 function keywordSearch (query) {
-//	let result=search($('#searchBox').val());
-	return false;
+  //	let result=search($('#searchBox').val());
+  return false;
 }
+*/
 
 function search(query) {
-	var options = {
-		shouldSort: true,
-		tokenize: true,
-		includeScore: true,
-		threshold: 0.2,
-		location: 0,
-		distance: 100,
-		maxPatternLength: 32,
-		minMatchCharLength: 2,
-		keys: [
-			"title"
-		]
-	};
-	var fuse = new Fuse(articles, options); // "list" is the item array
-	var result = fuse.search(query);
-	return result;
+  var options = {
+    shouldSort: true,
+    tokenize: true,
+    includeScore: true,
+    threshold: 0.2,
+    findAllMatches: true,
+    includeMatches: true,
+    maxPatternLength: 32,
+    minMatchCharLength: 2,
+    keys: [
+      {name:'num',weight:0.45},
+      {name:'title',weight:0.35},
+      {name:'contents',weight:0.2}
+    ]
+  };
+  var fuse = new Fuse(articles, options); // "list" is the item array
+  var result = fuse.search(query);
+  return result;
 }
-
-
-// Load Fuse.js return success and callback initiate()
-// If not keyword, use fuse.js to search article data
-// Initiate fuse-searchbox
-
-// Initiate Service Worker
