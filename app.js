@@ -1,6 +1,7 @@
 //init sequence
 var articles=articles();
 $('#searchButton').click(function (event) {clickSearch(event)});
+$('#searchButton').hide();
 $('#searchBox').removeAttr( "disabled" );
 $('#searchBox').keyup(function(event) {
   searchKeys(event);
@@ -40,6 +41,9 @@ function pageChange () {
   let url=new URL(window.location.href);
   // determine if hashtag is extra deep 
   // and, if so, reconstruct to make deep hash into query and shorten hash
+  if ( pageHash == '#search') {
+    $("#searchBox").focus();
+  }
   if ( pageHash.indexOf('.') != -1 ) {
     url=reHash(url);
     window.location=url.href; // re-loads page with new query/hash
@@ -73,10 +77,10 @@ function itemHTML (itemObject) {
   url.hash=itemObject.item.id;
   let linkHREF=reHash(url);
   let resultLink = `
-    <blockquote style="font-size:var(--text-size-0); line-height:var(--text-size-1)">
-      <h3 style="font-size:var(--text-size-1)"><a href="${linkHREF}">${itemObject.item.num} ${itemObject.item.title}</a></h3>
+    <li>
+      <h4 style="font-size:var(--text-size-1)"><a href="${linkHREF}">${itemObject.item.num} ${itemObject.item.title}</a></h4>
       ${itemObject.item.content}
-    </blockquote>
+    </li>
   `;
   return resultLink;
 }

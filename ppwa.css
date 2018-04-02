@@ -332,6 +332,27 @@ nav.breadcrumb {
 #searchButton, #searchBox {
   display:inline-block;
 }
+#searchBox {
+  font-size: var(--text-size-3);
+  width:100%;
+}
+#searchResults {
+  padding-left:0;
+}
+#searchResults li {
+  font-size: var(--text-size-sm);
+  line-height: var(--text-size-0);
+  list-style-type:none;
+  margin: 1em 0;
+  padding: 0.3em 0.7em;
+  box-sizing: border-box; 
+  background: var(--color-light-2);
+}
+#searchResults h4 {
+  font-size: var(--text-size-1);
+  line-height: var(--text-size-2);
+  margin: 0.2em 0 0.2em 0;
+}
 
 /* tables in .content */
 .content > table {
@@ -427,7 +448,7 @@ article footer nav a {
 	border: 1px solid #dddddd;
 	font-family: var(--display-font);
 	font-size: 30px;
-	font-weight:bold;
+	font-weight:normal;
 	line-height: 60px;
 	background: var(--color-light-2);
 	color: var(--color-main);
