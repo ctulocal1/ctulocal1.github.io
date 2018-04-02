@@ -447,7 +447,7 @@ article footer nav a {
 	text-decoration:none;
 	border: 1px solid #dddddd;
 	font-family: var(--display-font);
-	font-size: 30px;
+	font-size: var(--text-size-2);
 	font-weight:normal;
 	line-height: 60px;
 	background: var(--color-light-2);
