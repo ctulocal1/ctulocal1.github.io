@@ -1,6 +1,6 @@
 /* Base Theme Variables */
 :root {
-  --color-main: #1a3a88;
+  --color-main: #1a3a68;
 	--color-accent: #d2232a;
 	--color-light-1: #eeeeff;
 	--color-light-2: #eeeeee;
@@ -98,6 +98,7 @@ header nav ul li a {
 	color: var(--color-main);
 	font-size: var(--text-size-3);
 	min-height:60px;
+        border: 3px dotted var(--color-light-1);
 }
 
 
@@ -113,7 +114,7 @@ main {
 
 /* Article block styles */
 article {
-	padding: calc(50px + 1em) 15px 1em 15px;
+	padding: calc(50px + 1em) 20px 1em 20px;
 	//border-top:1px solid var(--color-light-2);
         border-top:5px solid var(--color-accent);
 	width: calc(100vw - 30px);
@@ -121,7 +122,7 @@ article {
 	position:relative;
 	z-index:1;
 	margin: -75px auto 0 auto;
-
+        box-sizing:border-box;
 }
 article::after {
 	content: ' ';
@@ -450,14 +451,14 @@ article footer nav a {
 	padding:5px 10px;
 	vertical-align:middle;
 	text-decoration:none;
-	border: 1px solid #dddddd;
+	border: 1px solid #224488;
 	font-family: var(--display-font);
 	font-size: var(--text-size-1);
 	font-weight:normal;
-	line-height: 60px;
-	background: var(--color-light-2);
-	color: var(--color-main);
-    min-height: 60px;
+	line-height: 30px;
+	background: var(--color-main);
+	color: var(--color-light-2);
+        min-height: 30px;
 }
 article footer nav li:last-child {
 	text-align:right;
@@ -506,7 +507,7 @@ article:last-of-type footer {
 	display:block;
 	width: 100%;
 	bottom:0;
-	min-height:60px;
+	min-height:30px;
 	position:fixed;
 	left:0;
 	bottom:0;
@@ -535,7 +536,7 @@ article:target footer {
 	display:block;
 	width: 100%;
 	bottom:0;
-	min-height:60px;
+	min-height:30px;
 	position:fixed;
 	left:0;
 	bottom:0;
