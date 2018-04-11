@@ -10,16 +10,20 @@ window.addEventListener("hashchange", pageChange, false);
 window.onload=pageChange;
 
 function articles () {
-  let articles=[];
+  let articles={level1:[],level2:[],level3:[],level4:[],level5:[]};
   $('article').each (function() {
     let article=extract(this);
-    articles.push(article);
+    if ( article.num.indexOf('sec') != -1) {
+        articles.level1.push(article); }
+    else if ( article.num.indexOf('-') == -1) {
+        articles.level2.push(article); }
+    else articles.level3.push(article);
     $(this).children('.level5').each (function() {
       let subheading=extract(this);
-      articles.push(subheading);
+      articles.level4.push(subheading);
       $(this).children('.level6').each (function() {
         let subparagraph=extract(this);
-        articles.push(subparagraph);
+        articles.level5.push(subparagraph);
       });
     });
   })
@@ -130,7 +134,7 @@ function search(query) {
     shouldSort: true,
     tokenize: true,
     includeScore: true,
-    threshold: 0.2,
+    threshold: 0.1,
     findAllMatches: true,
     includeMatches: true,
     maxPatternLength: 32,
@@ -141,7 +145,17 @@ function search(query) {
       {name:'contents',weight:0.2}
     ]
   };
-  var fuse = new Fuse(articles, options); // "list" is the item array
-  var result = fuse.search(query);
+  var fuse1 = new Fuse(articles.level1, options);
+  var result1 = fuse1.search(query);
+  var fuse2 = new Fuse(articles.level2, options);
+  var result2 = fuse2.search(query);
+  var fuse3 = new Fuse(articles.level3, options);
+  var result3 = fuse3.search(query);
+  var fuse4 = new Fuse(articles.level4, options);
+  var result4 = fuse4.search(query);
+  var fuse5 = new Fuse(articles.level5, options);
+  var result5 = fuse5.search(query);
+  var result=[];
+  result=result.concat(result1,result2,result3,result4,result5);
   return result;
 }
