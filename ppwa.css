@@ -522,7 +522,8 @@ article:last-of-type footer {
 
 article:target{
 	display:block;
-	min-height:calc(  (100vw + 90px) + ( 2 * var(--text-size-3) )  );
+	//min-height:calc(  (100vw + 90px) + ( 2 * var(--text-size-3) )  );
+        min-height: 100vh;
 }
 article:target * {
 	animation: fade-in 0.25s linear 1;
