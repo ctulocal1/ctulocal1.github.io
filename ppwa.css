@@ -117,7 +117,7 @@ main {
 
 /* Article block styles */
 article {
-	padding: calc(50px + 1em) 20px 1em 20px;
+	padding: calc(50px + 1em) 10px 1em 10px;
 	//border-top:1px solid var(--color-light-2);
         border-top:5px solid var(--color-accent);
 	max-width:600px;
