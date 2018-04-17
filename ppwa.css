@@ -363,6 +363,10 @@ nav.breadcrumb {
   line-height: var(--text-size-2);
   margin: 0.2em 0 0.2em 0;
 }
+#searchResults div {
+    font-family: var(--display-font);
+    font-size: var(--text-size-tiny);
+}
 
 /* tables in .content */
 .content > table {

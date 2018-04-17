@@ -63,11 +63,11 @@ function articles () {
     else articles.level3.push(article);
     $(this).children('.level5').each (function() {
       let subheading=extract(this);
-      subheading.parents=article.parents+' » '+article.num+' '+article.title;
+      subheading.parents=article.parents+' » '+article.num+' '+article.title.toUpperCase();
       articles.level4.push(subheading);
       $(this).children('.level6').each (function() {
         let subparagraph=extract(this);
-        subparagraph.parents=subheading.parents+' » '+subheading.num+' '+subheading.title;
+        subparagraph.parents=subheading.parents+' » '+subheading.num+' '+subheading.title.toUpperCase();
         articles.level5.push(subparagraph);
       });
     });
@@ -78,7 +78,7 @@ function articles () {
 function extract (section) {
   let article={};
   article.id=section.id;
-  article.parents=$(section).find(".breadcrumb").first().text().trim();
+  article.parents=$(section).find(".breadcrumb").first().text().trim().toUpperCase();
   article.num=$(section).find(".artNum").first().text().trim();
   article.title=$(section).find(".artTitle").first().text().trim();
   article.content=$(section).find(".content").first().text().trim();
@@ -99,8 +99,8 @@ function itemHTML (itemObject) {
     let linkHREF=reHash(url);
     let resultLink = `
         <li>
-        <div style="font-size:var(--text-size-sm)">${itemObject.item.parents}</div>
-        <h4 style="font-size:var(--text-size-1)"><a href="${linkHREF}">${itemObject.item.num} ${itemObject.item.title}</a></h4>
+        <div>${itemObject.item.parents}</div>
+        <h4><a href="${linkHREF}">${itemObject.item.num} ${itemObject.item.title}</a></h4>
         ${itemObject.item.content}
     </li>
         `;
