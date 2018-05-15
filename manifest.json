@@ -19,7 +19,7 @@
     {
       "src": "icons/Agreement.png",
       "type": "image/png",
-      "sizez": "512x512"
+      "sizes": "512x596"
     }
   ],
   "start_url": "index.html#home",
