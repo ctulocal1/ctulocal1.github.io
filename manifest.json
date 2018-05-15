@@ -15,10 +15,15 @@
       "src": "icons/favicon-196x196.png",
       "type": "image/png",
       "sizes": "196x196"
+    },
+    {
+      "src": "icons/Agreement.png",
+      "type": "image/png",
+      "sizez": "512x512"
     }
   ],
   "start_url": "index.html#home",
   "display": "browser",
-  "background_color": "#1a3a88",
+  "background_color": "#1a3a68",
   "theme_color": "#d2232a"
 }
