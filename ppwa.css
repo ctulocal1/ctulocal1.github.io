@@ -395,6 +395,9 @@ nav.breadcrumb {
 .content > table thead tr:not(:last-child) th, table.tablesaw thead tr:not(:last-child) th {
 	border-bottom: 1px solid var(--color-light-2);
 }
+.content table tbody th {
+  white-space:nowrap;
+}
 .content > table p, table.tablesaw p {
 	font-family:var(--display-text); 
 	font-size:var(--text-size-0); 
