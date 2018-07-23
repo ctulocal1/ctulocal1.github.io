@@ -1,5 +1,6 @@
 //init sequence
 var articles=articles();
+console.log(articles);
 $('#searchButton').click(function (event) {clickSearch(event)});
 $('#searchButton').hide();
 $('#searchBox').removeAttr( "disabled" );
