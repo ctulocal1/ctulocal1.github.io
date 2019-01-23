@@ -31,6 +31,7 @@ function initSW () { console.log ('initSW called');
 // 
 // Functions related to navigation
 //
+/*
 function pageChange () {
     let pageHash=window.location.hash;
     let pageParams=window.location.search;
@@ -55,15 +56,15 @@ function pageChange () {
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
         url.search='';
-//        history.replaceState({ 'sec': pageParams }, '', url.href);
+        history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
-
+*/
 function reHash (url) {
     let pageHash=url.hash;
     pageHash=pageHash.split('#')[1];
     url.search=pageHash;
-    let newHash=pageHash.split('.')[0];
+    let newHash=pageHash.split('.')[1];
     url.hash=newHash;
     return url;
 }
