@@ -64,7 +64,8 @@ function reHash (url) {
     pageHash=pageHash.split('#')[1];
     let newHash=pageHash.split('.')[0];
     let host=url.hostname;
-    url.href=new String.concat('#',newHash,'?',pageHash);
+    url='';
+    url.href=host.concat('#',newHash,'?',pageHash);
     return url;//
 }
 
