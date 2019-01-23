@@ -47,15 +47,15 @@ function pageChange () {
     }
     // if there’s a query string then use it as a target to scroll down
     if (pageParams!='') {
-        pageParams=pageParams.split('?')[1];
-        let targetID='#' + pageParams;
+        let parameters=pageParams.split('?')[1];
+        let targetID='#' + parameters;
         // use getElem because the . in the id attribute confuses jQuery
-        let target=document.getElementById( pageParams ); 
+        let target=document.getElementById( parameters ); 
         let pos = $(target).offset();
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
         url.search='';
-        history.replaceState({ 'sec': pageParams }, '', url.href);
+//        history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
 
