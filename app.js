@@ -59,7 +59,6 @@ function pageChange () {
         history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
-*/
 function reHash (url) {
     let pageHash=url.hash;
     pageHash=pageHash.split('#')[1];
@@ -68,6 +67,7 @@ function reHash (url) {
     url.hash=newHash;
     return url;
 }
+*/
 
 //
 // Functions to create data image of the HTML for search
