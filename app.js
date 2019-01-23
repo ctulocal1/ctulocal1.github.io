@@ -63,8 +63,8 @@ function reHash (url) {
     let pageHash=url.hash;
     pageHash=pageHash.split('#')[1];
     let newHash=pageHash.split('.')[0];
-    url.hash=newHash;
-    url.search=pageHash;
+    let host=url.hostname;
+    url.href=host+'#'newHash+'?'+pageHash;
     return url;
 }
 
