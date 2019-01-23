@@ -31,7 +31,6 @@ function initSW () { console.log ('initSW called');
 // 
 // Functions related to navigation
 //
-/*
 function pageChange () {
     let pageHash=window.location.hash;
     let pageParams=window.location.search;
@@ -48,26 +47,26 @@ function pageChange () {
     }
     // if there’s a query string then use it as a target to scroll down
     if (pageParams!='') {
-        let parameters=pageParams.split('?')[1];
-        let targetID='#' + parameters;
+        let subsection=pageParams.split('?')[1];
+        let targetID='#' + pageParams;
         // use getElem because the . in the id attribute confuses jQuery
-        let target=document.getElementById( parameters ); 
+        let target=document.getElementById( targetID ); 
         let pos = $(target).offset();
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
         url.search='';
-        history.replaceState({ 'sec': pageParams }, '', url.href);
+//        history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
+
 function reHash (url) {
     let pageHash=url.hash;
     pageHash=pageHash.split('#')[1];
-    url.search=pageHash;
-    let newHash=pageHash.split('.')[1];
+    let newHash=pageHash.split('.')[0];
     url.hash=newHash;
+    url.search=pageHash;
     return url;
 }
-*/
 
 //
 // Functions to create data image of the HTML for search
