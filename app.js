@@ -34,6 +34,7 @@ function initSW () { console.log ('initSW called');
 function pageChange () {
     let pageHash=window.location.hash;
     let pageParams=pageHash.split('?')[1];
+        pageHash=pageHash.split('?')[0];
     let url=new URL(window.location.href);
 console.log('original pageHash='+pageHash+' pageParams='+pageParams+' url='+url);
     // determine if hashtag is extra deep 
