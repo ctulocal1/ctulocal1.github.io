@@ -45,7 +45,7 @@ console.log('original pageHash='+pageHash+' pageParams='+pageParams+' url='+url)
     if ( pageHash.indexOf('.') != -1 ) {
         url=reHash(url);
  console.log ('middle url.href='+url.href);
- //       window.location=url.href; // re-loads page with new query/hash
+        window.location=url.href; // re-loads page with new query/hash
         // on reload, this block will be skipped and go straight to next
     }
     // if there’s a query string then use it as a target to scroll down
