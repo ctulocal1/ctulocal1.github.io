@@ -50,10 +50,9 @@ console.log('original pageHash='+pageHash+' pageParams='+pageParams+' url='+url)
     }
     // if there’s a query string then use it as a target to scroll down
     if (pageParams!='') {
-        let subsection=pageParams.split('?')[1];
         let targetID='#' + pageParams;
         // use getElem because the . in the id attribute confuses jQuery
-        let target=document.getElementById( targetID ); 
+        let target=document.getElementById( pageParams ); 
         let pos = $(target).offset();
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
