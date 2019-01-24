@@ -42,6 +42,7 @@ function pageChange () {
     }
     if ( pageHash.indexOf('.') != -1 ) {
         url=reHash(url);
+        console.log ('middle url.href='+url.href);
         //window.location=url.href; // re-loads page with new query/hash
         // on reload, this block will be skipped and go straight to next
     }
@@ -66,8 +67,8 @@ function reHash (url) {
     let host=url.hostname;
     url='';
     let newHREF=host.concat('#',newHash,'?',pageHash);
-    console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF);
     url.href=newHREF;
+    console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF+' url.href='+url.href);
     return url;//
 }
 
