@@ -35,6 +35,7 @@ function pageChange () {
     let pageHash=window.location.hash;
     let pageParams=window.location.search;
     let url=new URL(window.location.href);
+    console.log('original url='+url);
     // determine if hashtag is extra deep 
     // and, if so, reconstruct to make deep hash into query and shorten hash
     if ( pageHash == '#search') {
