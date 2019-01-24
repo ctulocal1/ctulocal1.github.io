@@ -33,9 +33,10 @@ function initSW () { console.log ('initSW called');
 //
 function pageChange () {
     let pageHash=window.location.hash;
+console.log('original pageHash='+pageHash);
     let pageParams=window.location.search;
     let url=new URL(window.location.href);
-    console.log('original url='+url);
+console.log('original url='+url);
     // determine if hashtag is extra deep 
     // and, if so, reconstruct to make deep hash into query and shorten hash
     if ( pageHash == '#search') {
@@ -43,8 +44,8 @@ function pageChange () {
     }
     if ( pageHash.indexOf('.') != -1 ) {
         url=reHash(url);
-        console.log ('middle url.href='+url.href);
-        window.location=url.href; // re-loads page with new query/hash
+ console.log ('middle url.href='+url.href);
+ //       window.location=url.href; // re-loads page with new query/hash
         // on reload, this block will be skipped and go straight to next
     }
     // if there’s a query string then use it as a target to scroll down
@@ -68,7 +69,7 @@ function reHash (url) {
     let protocol='https://';
     let newHREF=protocol.concat(host,'#',newHash,'?',pageHash);
     url.href=newHREF;
-    console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF+' url.href='+url.href);
+console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF+' url.href='+url.href);
     return url;//
 }
 
