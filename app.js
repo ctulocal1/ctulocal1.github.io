@@ -33,10 +33,9 @@ function initSW () { console.log ('initSW called');
 //
 function pageChange () {
     let pageHash=window.location.hash;
-console.log('original pageHash='+pageHash);
     let pageParams=window.location.search;
     let url=new URL(window.location.href);
-console.log('original url='+url);
+console.log('original pageHash='+pageHash+' pageParams='+pageParams+'original url='+url);
     // determine if hashtag is extra deep 
     // and, if so, reconstruct to make deep hash into query and shorten hash
     if ( pageHash == '#search') {
@@ -57,7 +56,7 @@ console.log('original url='+url);
         let pos = $(target).offset();
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
-        history.replaceState({ 'sec': pageParams }, '', url.href);
+//        history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
 
