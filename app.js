@@ -62,7 +62,7 @@ console.log('original pageHash='+pageHash+' pageParams='+pageParams+' url='+url)
 
 function reHash (url) {
     let pageHash=url.hash;
-    pageHash=pageHash.split('#')[1];
+    pageHash=pageHash.split('?')[1];
     let newHash=pageHash.split('.')[0];
     let host=url.hostname;
     let protocol='https://';
