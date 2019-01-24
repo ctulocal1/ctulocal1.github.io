@@ -55,7 +55,6 @@ function pageChange () {
         let pos = $(target).offset();
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
-        url.search='';
         history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
