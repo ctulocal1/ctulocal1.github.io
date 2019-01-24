@@ -35,7 +35,7 @@ function pageChange () {
     let pageHash=window.location.hash;
     let pageParams=window.location.search;
     let url=new URL(window.location.href);
-console.log('original pageHash='+pageHash+' pageParams='+pageParams+'original url='+url);
+console.log('original pageHash='+pageHash+' pageParams='+pageParams+' url='+url);
     // determine if hashtag is extra deep 
     // and, if so, reconstruct to make deep hash into query and shorten hash
     if ( pageHash == '#search') {
@@ -66,7 +66,7 @@ function reHash (url) {
     let newHash=pageHash.split('.')[0];
     let host=url.hostname;
     let protocol='https://';
-    let newHREF=protocol.concat(host,'#',newHash,'?',pageHash);
+    let newHREF=protocol.concat(host,'#',newHash,'?sec=',pageHash);
     url.href=newHREF;
 console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF+' url.href='+url.href);
     return url;//
