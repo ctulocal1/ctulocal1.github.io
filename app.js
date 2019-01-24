@@ -42,7 +42,7 @@ function pageChange () {
     }
     if ( pageHash.indexOf('.') != -1 ) {
         url=reHash(url);
-        window.location=url.href; // re-loads page with new query/hash
+        //window.location=url.href; // re-loads page with new query/hash
         // on reload, this block will be skipped and go straight to next
     }
     // if there’s a query string then use it as a target to scroll down
@@ -55,7 +55,7 @@ function pageChange () {
         let top=pos.top - 130; // the -130 accounts for nav bar height
         $('body, html').animate({scrollTop: top});
         url.search='';
-//        history.replaceState({ 'sec': pageParams }, '', url.href);
+        history.replaceState({ 'sec': pageParams }, '', url.href);
     }
 }
 
