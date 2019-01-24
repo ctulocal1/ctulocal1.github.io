@@ -44,7 +44,7 @@ function pageChange () {
     if ( pageHash.indexOf('.') != -1 ) {
         url=reHash(url);
         console.log ('middle url.href='+url.href);
-        //window.location=url.href; // re-loads page with new query/hash
+        window.location=url.href; // re-loads page with new query/hash
         // on reload, this block will be skipped and go straight to next
     }
     // if there’s a query string then use it as a target to scroll down
@@ -65,7 +65,8 @@ function reHash (url) {
     pageHash=pageHash.split('#')[1];
     let newHash=pageHash.split('.')[0];
     let host=url.hostname;
-    let newHREF=host.concat('#',newHash,'?',pageHash);
+    let protocol='https://';
+    let newHREF=protocol.concat(host,'#',newHash,'?',pageHash);
     url.href=newHREF;
     console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF+' url.href='+url.href);
     return url;//
