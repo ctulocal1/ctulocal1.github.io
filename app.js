@@ -7,8 +7,6 @@ $('#searchBox').removeAttr( "disabled" );
 $('#searchBox').keyup(function(event) {
     searchKeys(event);
 });
-window.addEventListener("hashchange", pageChange, false);
-window.onload=pageChange;
 initSW();
 
 function initSW () { console.log ('initSW called');
