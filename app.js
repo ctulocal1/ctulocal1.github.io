@@ -26,49 +26,6 @@ function initSW () { console.log ('initSW called');
     console.warn('Service worker is not supported');
   }
 }
-// 
-// Functions related to navigation
-//
-function pageChange () {
-    let pageHash=window.location.hash;
-    let pageParams=pageHash.split('?')[1];
-        pageHash=pageHash.split('?')[0];
-    let url=new URL(window.location.href);
-console.log('original pageHash='+pageHash+' pageParams='+pageParams+' url='+url);
-    // determine if hashtag is extra deep 
-    // and, if so, reconstruct to make deep hash into query and shorten hash
-    if ( pageHash == '#search') {
-        $("#searchBox").focus();
-    }
-    if ( pageHash.indexOf('.') != -1 ) {
-        url=reHash(url);
- console.log ('middle url.href='+url.href);
-        window.location=url.href; // re-loads page with new query/hash
-        // on reload, this block will be skipped and go straight to next
-    }
-    // if there’s a query string then use it as a target to scroll down
-    if (pageParams!='') {
-        let targetID='#' + pageParams;
-        // use getElem because the . in the id attribute confuses jQuery
-        let target=document.getElementById( pageParams ); 
-        let pos = $(target).offset();
-        let top=pos.top - 130; // the -130 accounts for nav bar height
-        $('body, html').animate({scrollTop: top});
-        history.replaceState({ 'sec': pageParams }, '', url.href);
-    }
-}
-
-function reHash (url) {
-    let pageHash=url.hash;
-    pageHash=pageHash.split('?')[1];
-    let newHash=pageHash.split('.')[0];
-    let host=url.hostname;
-    let protocol='https://';
-    let newHREF=protocol.concat(host,'#',newHash,'?sec=',pageHash);
-    url.href=newHREF;
-console.log('pageHash='+pageHash+' newHash='+newHash+' host='+host+' newHREF='+newHREF+' url.href='+url.href);
-    return url;//
-}
 
 //
 // Functions to create data image of the HTML for search
@@ -117,7 +74,7 @@ function snippet (itemContent) {
 function itemHTML (itemObject) {
     let url=new URL(window.location.href);
     url.hash=itemObject.item.id;
-    let linkHREF=reHash(url);
+    let linkHREF=url;
     let resultLink = `
         <li>
         <div>${itemObject.item.parents}</div>
