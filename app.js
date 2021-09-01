@@ -180,7 +180,7 @@ function search(query) {
         keys: [
         {name:'num',weight:0.45},
         {name:'title',weight:0.35},
-        {name:'contents',weight:0.2}
+        {name:'contents',weight:0.42}
         ]
     };
     var fuse1 = new Fuse(articles.level1, options);
